@@ -1,4 +1,4 @@
-# Network Inventory CLI
+# Network Inventory CLI For MacOS
 
 A portable, USB-friendly CLI tool for discovering network devices and inventorying SSH-capable hosts with encrypted credential storage and read-only operations.
 

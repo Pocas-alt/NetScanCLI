@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "net-inventory-cli"
+version = "0.1.0"
+description = "Portable network inventory CLI with encrypted credential storage and SSH-based device scanning"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "questionary>=2.0.1",
+    "rich>=13.7.0",
+    "paramiko>=3.4.0",
+    "cryptography>=41.0.7",
+    "pydantic>=2.5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.3",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["net_inventory_cli*"]
+
+[project.scripts]
+net-inventory = "net_inventory_cli.main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v"
+
+[tool.coverage.run]
+source = ["net_inventory_cli"]
+omit = ["*/tests/*", "*/__pycache__/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
